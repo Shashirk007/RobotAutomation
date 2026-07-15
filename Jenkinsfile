@@ -29,5 +29,14 @@ pipeline {
             }
         }
 
+        stage('Run Robot Tests') {
+            steps {
+                bat '''
+                call venv\\Scripts\\activate
+                python -m robot -d reports tests
+                '''
+    }
+}
+
     }
 }
