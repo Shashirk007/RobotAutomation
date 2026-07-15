@@ -35,6 +35,17 @@ pipeline {
                 call venv\\Scripts\\activate
                 python -m robot -d reports tests
                 '''
+        }
+    }
+        stage('Publish Report') {
+            steps {
+                step([
+                    $class: 'RobotPublisher',
+                    outputPath: 'reports',
+                    outputFileName: 'output.xml',
+                    reportFileName: 'report.html',
+                    logFileName: 'log.html'
+        ])
     }
 }
 
