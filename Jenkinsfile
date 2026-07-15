@@ -2,10 +2,16 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+
+        stage('Checkout Code') {
             steps {
-                echo 'Hello Shashi! Welcome to Jenkins Pipeline.'
+                echo 'Downloading code from GitHub...'
+
+                checkout scm
+
+                echo 'Checkout completed.'
             }
         }
+
     }
 }
