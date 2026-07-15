@@ -1,0 +1,14 @@
+# Robot Framework Output Folder
+reports/
+
+# Virtual Environment Folder
+venv/
+
+# Clean up stray root files if generated accidentally
+log.html
+output.xml
+report.html
+
+# Python System Files
+__pycache__/
+*.pyc
