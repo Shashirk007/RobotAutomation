@@ -9,14 +9,23 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                echo 'Downloading code from GitHub...'
+                echo 'Downloading source code...'
                 checkout scm
             }
         }
 
-        stage('Setup Python') {
+        stage('Create Virtual Environment') {
             steps {
-                bat '"%PYTHON%" --version'
+                bat '"%PYTHON%" -m venv venv'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                bat '''
+                call venv\\Scripts\\activate
+                python -m pip install -r requirements.txt
+                '''
             }
         }
 
