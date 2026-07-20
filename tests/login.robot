@@ -1,20 +1,36 @@
 *** Settings ***
-
-Library    SeleniumLibrary
-
-*** Variables ***
-
-${URL}     https://www.saucedemo.com
-${USERNAME}    standard_user
-${PASSWORD}    secret_sauce
+Resource    ../resources/variables.robot
+Resource    ../resources/locators.robot
+Resource    ../resources/keywords.robot
 
 *** Test Cases ***
-Login with valid credentials
-    Open Browser    ${URL}    chrome
-    Maximize Browser Window
-    Input Text    id=user-name    ${USERNAME}
-    Input Text    id=password     ${PASSWORD}
-    Click Button   id=login-button
-    Title Should Be    Swag Labs
-    Sleep    3s
+
+Login Test
+    Open SauceDemo
+    Login To SauceDemo
+    Verify Products Page
+    Close Browser
+
+Add Product Test
+    Open SauceDemo
+    Login To SauceDemo
+    Add Backpack To Cart
+    Open Cart
+    Page Should Contain    Swag Labs
+    Close Browser
+
+Checkout Product Test
+    Open SauceDemo
+    Login To SauceDemo
+    Add Backpack To Cart
+    Open Cart
+    Checkout
+    Page Should Contain    Swag Labs
+    Close Browser
+
+Logout Test
+    Open SauceDemo
+    Login To SauceDemo
+    Logout
+    Page Should Contain Element    ${LOGIN_BTN}
     Close Browser
