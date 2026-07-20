@@ -31,10 +31,6 @@ Checkout
     Input Text      ${ZIPCODE}      12345
     Click Button    ${CONTINUE_BTN}
 
-# Logout
-#     Click Button    ${MENU_BTN}
-#     Wait Until Element Is Visible    ${LOGOUT_BTN}
-#     Click Button    ${LOGOUT_BTN} 
 
 Logout
     Click Element    ${MENU_BTN}
